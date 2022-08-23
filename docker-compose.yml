@@ -1,10 +1,18 @@
 version: '3.8'
 services:
-   web:
-       build: .
-       command: python manage.py runserver 0.0.0.0:8000
-       ports:
-           - 8000:8000
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    container_name: web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.web.rule=Host(`license.cards`) && PathPrefix(`/card`)"
+      - "traefik.http.routers.web.middlewares=web-stripprefix"
+      - "traefik.http.middlewares.web-stripprefix.stripprefix.prefixes=/card"
+      - "traefik.http.routers.web.tls=true"
+      - "traefik.http.routers.web.tls.certresolver=resolver"
+    expose:  # new
+      - 8000
 networks:
   default:
     external:
