@@ -97,10 +97,10 @@ WSGI_APPLICATION = 'card.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vcard_tarjeta_due',
+        'NAME': 'vcard_tarjeta',
         'USER': 'root',
-        'PASSWORD': '123456789',
-        'HOST': '172.18.0.2',
+        'PASSWORD': '6554983741',
+        'HOST': '192.168.176.2',
         'PORT': '3306',
     },
 }
@@ -153,7 +153,7 @@ CORS_ALLOW_CREDENTIALS = False
 
 # If this is used, then not need to use `CORS_ALLOW_ALL_ORIGINS = True
 CORS_ALLOWED_ORIGINS = [
-    "http://192.168.0.101:8082"
+    "https://license.cards:8000"
 ]
 
 CORS_ORIGIN_WHITELIST = [] # Es igual a CORS_ALLOWED_ORIGINS, pero tiene menos prioridad
@@ -223,7 +223,7 @@ CORS_ALLOWED_ORIGIN_REGEXES = []
 MEDIA_ROOT = os.path.join(DIR,'media')
 
 MEDIA_URL = '/media/'
-WEBSERVER_PORT=':8085'
-WEBSERVER_HOST='192.168.0.101'
-WEBSERVER_PROTOCOL='http://'
+WEBSERVER_PORT=':8000'
+WEBSERVER_HOST='license.cards/'
+WEBSERVER_PROTOCOL='https://'
 WEBSERVER_IMAGES = WEBSERVER_PROTOCOL+WEBSERVER_HOST+WEBSERVER_PORT+MEDIA_URL
