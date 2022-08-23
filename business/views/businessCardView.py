@@ -130,14 +130,18 @@ class BusinessCardListView(generics.ListAPIView):
         company         = self.request.query_params.get("company", None)
         user            = self.request.query_params.get("user", None)
         userName        = self.request.query_params.get("userName", None)
-        
+        """
+        Search por Company Id
+        """        
         if company:
             result_process = TblProcess.objects.filter(id= company)
             if result_process.count()> 0:
                 # Search user from de Process
                 queryset = TblUsers.get_queryset().filter(id_process = company)
             return queryset
-        
+        """
+        Search for Company Name
+        """
         if company_name:
             result_process = TblProcess.objects.filter(name=company_name)
             if result_process.count()>0:
