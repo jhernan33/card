@@ -116,6 +116,9 @@ class CardUserListView(generics.ListAPIView):
         context['users'] = queryset
         return render(request,'home.html',context)
 
+"""
+Class List Business Card
+"""
 class BusinessCardListView(generics.ListAPIView):
     permission_classes =()
     serializer_class = UserCardSerializer
