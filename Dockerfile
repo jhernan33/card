@@ -11,6 +11,9 @@ ENV PYTHONUNBUFFERED 1
 RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc apt default-libmysqlclient-dev
 
+# Copies all files from our local project into the container
+COPY . .
+
 RUN python -m pip install --upgrade pip
 RUN python -m pip install virtualenv
 RUN pip install -r requirements.txt
@@ -20,7 +23,7 @@ FROM python:3.8-slim
 
 WORKDIR /app
 
-# Copies all files from our local project into the container
+
 COPY . .
 # runs the pip install command for all packages listed in the requirements.txt file
 RUN pip install -r requirements.txt
