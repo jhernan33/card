@@ -9,6 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
+    apt-get upgrade -y \
     apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev python-dev build-essential python3-apt apt
 
 RUN apt-get install -y libapt-pkg-dev
