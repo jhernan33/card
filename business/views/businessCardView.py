@@ -8,21 +8,8 @@ from urllib import request
 from django.shortcuts import render
 from rest_framework import generics, status
 
-from django.shortcuts import get_object_or_404
 from rest_framework.response import Response
-
-from rest_framework import filters as df
-from rest_framework.permissions import IsAuthenticated
-from django.core.exceptions import ObjectDoesNotExist
-from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework.filters import SearchFilter, OrderingFilter
-
-from django.http.response import JsonResponse
-from rest_framework.parsers import JSONParser 
-from django.http import Http404, HttpResponse
 from django.core.serializers import serialize
-from django.db import connection
-from django.core.serializers.json import DjangoJSONEncoder
 from business.paginations import SmallResultsSetPagination
 from business.serializers.businessCardSerializer import BusinessCardSerializer
 
@@ -130,6 +117,7 @@ class BusinessCardListView(generics.ListAPIView):
         company         = self.request.query_params.get("company", None)
         user            = self.request.query_params.get("user", None)
         userName        = self.request.query_params.get("userName", None)
+
         """
         Search por Company Id
         """        
