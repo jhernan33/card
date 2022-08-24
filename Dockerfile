@@ -9,13 +9,13 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev build-essential python-distutils-extra libapt-pkg-dev
+    apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev python-apt
 
 # Copies all files from our local project into the container
 COPY . .
 
 RUN python -m pip install --upgrade pip
-RUN python -m pip install virtualenv python-apt
+RUN python -m pip install virtualenv
 RUN pip install -r requirements.txt
 
 # Final Stage
