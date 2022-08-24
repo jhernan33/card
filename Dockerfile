@@ -9,10 +9,13 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
-    apt-get upgrade -y \
-    apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev python-dev build-essential python3-apt apt
+    apt-get install --no-install-recommends --assume-yes \
+    gcc default-libmysqlclient-dev \
+    python3-pip \
+    python-dev build-essential \
+    python3-apt apt \
+    libapt-pkg-dev
 
-RUN apt-get install -y libapt-pkg-dev
 # Copies all files from our local project into the container
 COPY . .
 
