@@ -1,6 +1,6 @@
-distlib==0.3.4
-distro==1.7.0
-distro-info==1.0
+distlib
+distro
+distro-info
 Django==4.0.4
 django-cors-headers==3.12.0
 django-extensions==3.1.5
