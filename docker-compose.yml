@@ -3,12 +3,12 @@ services:
   web:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
-    container_name: web
+    container_name: business
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.web.rule=Host(`license.cards`) && PathPrefix(`/card`)"
+      - "traefik.http.routers.web.rule=Host(`license.cards`) && PathPrefix(`/business`)"
       - "traefik.http.routers.web.middlewares=web-stripprefix"
-      - "traefik.http.middlewares.web-stripprefix.stripprefix.prefixes=/card"
+      - "traefik.http.middlewares.web-stripprefix.stripprefix.prefixes=/business"
       - "traefik.http.routers.web.tls=true"
       - "traefik.http.routers.web.tls.certresolver=resolver"
     expose:  # new
