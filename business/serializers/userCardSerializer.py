@@ -20,21 +20,17 @@ class UserCardSerializer(serializers.ModelSerializer):
         representation['user_name'] = instance.name
         representation['profile'] = instance.perfil
         representation['background_color'] = instance.colorfondo
-        """
-        representation['cos1_arti'] = 0 if instance.por1_arti is None  else (instance.ppre_arti*(instance.por1_arti/100))+instance.ppre_arti
-        """
+
         representation['background_image'] = '' if self.clearImage(instance.imagenfondo) is None else url+self.clearImage(instance.imagenfondo)
         representation['user_photo'] = '' if self.clearImage(instance.foto) is None else url+self.clearImage(instance.foto)
         representation['web_site'] = instance.web
         representation['foto'] = '' if self.clearImage(instance.foto) is None else url+self.clearImage(instance.foto)
         representation['imagenfondo'] = '' if self.clearImage(instance.imagenfondo) is None else url+self.clearImage(instance.imagenfondo)
         return representation
-    
-    """
-        Method Clear Image 
-    """
-    def clearImage(*Image):
-        image = Image[1]
+        
+    # metoho clear Image
+    def clearImage(*arg):
+        image = arg[1]
         imageClear = None
         if image is not None:
             position_image = image.rfind('/')
