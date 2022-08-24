@@ -8,4 +8,5 @@ WORKDIR /app
 COPY . .
 # runs the pip install command for all packages listed in the requirements.txt file
 RUN python -m pip install --upgrade pip
+RUN python -m pip install virtualenv
 RUN pip install -r requirements.txt
