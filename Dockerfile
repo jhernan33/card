@@ -9,10 +9,18 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc apt
+    apt-get install -y --no-install-recommends gcc apt libmysqlclient-dev
+
+RUN python -m pip install --upgrade pip
+RUN python -m pip install virtualenv
+RUN pip install -r requirements.txt
+
+# Final Stage
+FROM python:3.8-slim
+
+WORKDIR /app
+
 # Copies all files from our local project into the container
 COPY . .
 # runs the pip install command for all packages listed in the requirements.txt file
-RUN python -m pip install --upgrade pip
-RUN python -m pip install virtualenv
 RUN pip install -r requirements.txt
