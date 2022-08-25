@@ -12,7 +12,7 @@ RUN python3.9 -m venv /home/python/venv
 ENV PATH="/home/python/venv/bin:$PATH"
 
 # install requirements
-COPY ./card.api/requirements.txt .
+COPY . .
 RUN pip3 install --no-cache-dir wheel
 RUN pip3 install --no-cache-dir -r requirements.txt
 
@@ -27,7 +27,7 @@ COPY --from=builder-image /home/python/venv /home/python/venv
 USER python
 RUN mkdir /home/python/code
 WORKDIR  /home/python/code
-COPY --chown=python:python ./card.api .
+COPY --chown=python:python ./ .
 
 EXPOSE 8000
 
