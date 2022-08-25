@@ -14,7 +14,8 @@ ENV PATH="/home/python/venv/bin:$PATH"
 # install requirements
 COPY . .
 RUN pip3 install --no-cache-dir wheel
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt 
+RUN pip3 install --no-cache-dir unicorn
 
 FROM ubuntu@sha256:626ffe58f6e7566e00254b638eb7e0f3b11d4da9675088f4781a50ae288f3322 AS runner-image
 RUN apt-get update && \
