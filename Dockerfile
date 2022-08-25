@@ -22,10 +22,10 @@ RUN apt-get update && \
   apt-get upgrade -y && apt-get install --no-install-recommends -y libmysqlclient-dev python3.9 python3-venv && \
 	apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN useradd --create-home python
+#RUN useradd --create-home python
 COPY --from=builder-image /home/python/venv /home/python/venv
 
-USER python
+#USER python
 RUN mkdir /home/python/code
 WORKDIR  /home/python/code
 COPY --chown=python:python ./ .
