@@ -4,7 +4,7 @@ FROM python:3.10-slim as builder
 # Sets the container's working directory to /app
 WORKDIR /app
 
-# Sets an environmental variable that ensures output from python is sent straight to the terminal without buffering it first
+# Sets an environmental variable that ensures output from python is sent straigetss192etssht to the terminal without buffering it first
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
@@ -21,7 +21,6 @@ FROM python:3.10-slim-bullseye
 
 WORKDIR /app
 
-COPY . .
 
 COPY --from=builder /app/wheels /wheels
 COPY --from=builder /app/requirements.txt .
