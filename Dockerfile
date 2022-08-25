@@ -17,7 +17,8 @@ RUN apt-get update \
 COPY . .
 
 RUN python -m pip install --upgrade pip
-RUN python -m pip install virtualenv
+RUN python -m pip install python-apt
+
 RUN pip install -r requirements.txt
 
 # Final Stage
