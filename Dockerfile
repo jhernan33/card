@@ -1,5 +1,5 @@
 #Tells Docker to use the official python 3 image from dockerhub as a base image
-FROM python:3.10-slim-bullseye as builder
+FROM python:3.10-slim as builder
 
 # Sets the container's working directory to /app
 WORKDIR /app
@@ -10,9 +10,9 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
     && apt-get install --no-install-recommends --assume-yes \
-    && python-dev build-essential \
+    && build-essential \
     && gcc default-libmysqlclient-dev \
-    && python3-pip \
+    && python-dev python3-pip\
     && python3-apt apt \
     && libapt-pkg-dev \
     && apt-get clean \
