@@ -9,7 +9,7 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
-    && apt-get install --no-install-recommends --assume-yes gcc default-libmysqlclient-dev python-dev python3-pip python3-apt apt libapt-pkg-dev \
+    && apt-get install --no-install-recommends --assume-yes gcc default-libmysqlclient-dev python-dev python3-pip libapt-pkg-dev \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
@@ -17,7 +17,7 @@ RUN apt-get update \
 COPY . .
 
 RUN python -m pip install --upgrade pip
-RUN python -m pip install virtualenv 
+RUN python -m pip install virtualenv python3-apt apt
 RUN pip install -r requirements.txt
 
 # Final Stage
