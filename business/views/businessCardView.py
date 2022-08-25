@@ -142,7 +142,7 @@ class BusinessCardListView(generics.ListAPIView):
             # Search user from de Process
             queryset = TblUsers.get_queryset().filter(userid = user)
             return queryset
-        
+        # Searh UserName
         if userName:
             # Search user
             queryset = TblUsers.get_queryset().filter(name = userName)
