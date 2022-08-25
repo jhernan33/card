@@ -100,7 +100,7 @@ DATABASES = {
         'NAME': 'vcard_tarjeta',
         'USER': 'uvcard',
         'PASSWORD': '7325339461',
-        'HOST': '172.21.0.2',
+        'HOST': 'mysql_mysql_1',
         'PORT': '3306',
     },
 }
