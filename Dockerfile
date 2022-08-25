@@ -1,29 +1,11 @@
 #Tells Docker to use the official python 3 image from dockerhub as a base image
-FROM python:3.10-slim as builder
-
+FROM python:3.10-slim-bullseye
+# Sets an environmental variable that ensures output from python is sent straight to the terminal without buffering it first
+ENV PYTHONUNBUFFERED 1
 # Sets the container's working directory to /app
 WORKDIR /app
-
-# Sets an environmental variable that ensures output from python is sent straigetss192etssht to the terminal without buffering it first
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
-
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends gcc default-libmysqlclient-dev
-
 # Copies all files from our local project into the container
 COPY . .
-
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
-
-# Final Stage
-FROM python:3.10-slim-bullseye
-
-WORKDIR /app
-
-COPY . .
-COPY --from=builder /app/wheels /wheels
-
-
-RUN python -m pip install --upgrade pip pymysql
-RUN pip install --no-cache /wheels/*
+# runs the pip install command for all packages listed in the requirements.txt file
+RUN python -m pip install --upgrade pip
+RUN pip install -r requirements.txt
