@@ -10,7 +10,6 @@ ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
     && apt-get install --no-install-recommends --assume-yes \
-    && build-essential \
     && gcc default-libmysqlclient-dev \
     && python-dev python3-pip\
     && python3-apt apt \
