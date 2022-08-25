@@ -25,7 +25,7 @@ RUN apt-get update && \
 #RUN useradd --create-home python
 COPY --from=builder-image /home/python/venv /home/python/venv
 
-#USER python
+USER python
 RUN mkdir /home/python/code
 WORKDIR  /home/python/code
 COPY --chown=python:python ./ .
