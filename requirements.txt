@@ -25,4 +25,4 @@ pytz==2022.1
 pytz-deprecation-shim==0.1.0.post0
 pyxdg==0.27
 PyYAML==6.0
-gunicorn
+unicorn
