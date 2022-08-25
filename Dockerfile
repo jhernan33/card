@@ -16,14 +16,12 @@ COPY . .
 
 RUN python -m pip install --upgrade pip
 RUN python -m pip install python-apt virtualenv 
-
 RUN pip install -r requirements.txt
 
 # Final Stage
 FROM python:3.10-slim-bullseye
 
 WORKDIR /app
-
 
 COPY . .
 # runs the pip install command for all packages listed in the requirements.txt file
