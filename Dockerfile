@@ -39,4 +39,4 @@ ENV PYTHONUNBUFFERED=1
 ENV VIRTUAL_ENV=/home/python/venv \
   PATH="/home/python/venv/bin:$PATH"
 
-CMD ["gunicorn","-b", "0.0.0.0:8000", "-w", "4", "run:app"]
+# CMD ["gunicorn","-b", "0.0.0.0:8000", "-w", "4", "run:app"]
