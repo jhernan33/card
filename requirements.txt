@@ -19,10 +19,8 @@ pyparsing==3.0.9
 PyPDF3==1.0.6
 pyphen==0.12.0
 pyRFC3339==1.1
-python-apt==2.0.0+ubuntu0.20.4.7
 python-bidi==0.4.2
 python-dateutil==2.8.2
-python-debian==0.1.43
 pytz==2022.1
 pytz-deprecation-shim==0.1.0.post0
 pyxdg==0.27
