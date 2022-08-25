@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && \
+RUN apt-get update \
     && apt-get install --no-install-recommends --assume-yes \
     && python-dev build-essential \
     && gcc default-libmysqlclient-dev \
