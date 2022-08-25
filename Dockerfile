@@ -25,6 +25,5 @@ COPY . .
 COPY --from=builder /app/wheels /wheels
 
 
-RUN python -m pip install --upgrade pip
-RUN pip install pymysql
+RUN python -m pip install --upgrade pip pymysql
 RUN pip install --no-cache /wheels/*
