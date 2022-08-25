@@ -9,16 +9,12 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update \
-    && apt-cache search distutils \
-    && apt-get install --no-install-recommends --assume-yes build-essential python3-distutils-extra default-libmysqlclient-dev python-dev python3-pip libapt-pkg-dev \
-    && apt-get install --no-install-recommends --assume-yes python3-pip python3-apt python3-apt-dbg python3-apt python-apt-doc python-apt-common
+    apt-get install -y --no-install-recommends gcc
 
 # Copies all files from our local project into the container
 COPY . .
 
-RUN python -m pip install --upgrade pip
-RUN python -m pip install python-apt
-RUN pip install -r requirements.txt
+RUN pip wheel --no-cache-dir --no-deps --wheel-dir /app/wheels -r requirements.txt
 
 # Final Stage
 FROM python:3.10-slim-bullseye
@@ -26,5 +22,8 @@ FROM python:3.10-slim-bullseye
 WORKDIR /app
 
 COPY . .
-# runs the pip install command for all packages listed in the requirements.txt file
-RUN pip install -r requirements.txt
+
+COPY --from=builder /app/wheels /wheels
+COPY --from=builder /app/requirements.txt .
+
+RUN pip install --no-cache /wheels/*
