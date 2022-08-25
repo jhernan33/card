@@ -21,9 +21,9 @@ FROM python:3.10-slim-bullseye
 
 WORKDIR /app
 
-
+COPY . .
 COPY --from=builder /app/wheels /wheels
-COPY --from=builder /app/requirements.txt .
+
 
 RUN python -m pip install --upgrade pip
 RUN pip install --no-cache /wheels/*
