@@ -28,7 +28,7 @@ class UserCardSerializer(serializers.ModelSerializer):
         representation['imagenfondo'] = '' if self.clearImage(instance.imagenfondo) is None else url+self.clearImage(instance.imagenfondo)
         return representation
         
-    # metoho clear Image
+    # method clear Image
     def clearImage(*arg):
         image = arg[1]
         imageClear = None
