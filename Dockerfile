@@ -1,5 +1,5 @@
 #Tells Docker to use the official python 3 image from dockerhub as a base image
-FROM python:3.8-slim as builder
+FROM python:3.10-slim-bullseye as builder
 
 # Sets the container's working directory to /app
 WORKDIR /app
@@ -9,12 +9,14 @@ ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
 RUN apt-get update && \
-    apt-get install --no-install-recommends --assume-yes \
-    gcc default-libmysqlclient-dev \
-    python3-pip \
-    python-dev build-essential \
-    python3-apt apt \
-    libapt-pkg-dev
+    && apt-get install --no-install-recommends --assume-yes \
+    && python-dev build-essential \
+    && gcc default-libmysqlclient-dev \
+    && python3-pip \
+    && python3-apt apt \
+    && libapt-pkg-dev \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Copies all files from our local project into the container
 COPY . .
@@ -24,7 +26,7 @@ RUN python -m pip install virtualenv
 RUN pip install -r requirements.txt
 
 # Final Stage
-FROM python:3.8-slim
+FROM python:3.10-slim-bullseye
 
 WORKDIR /app
 
