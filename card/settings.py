@@ -98,8 +98,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'vcard_tarjeta',
-        'USER': 'uvcard',
-        'PASSWORD': '7325339461',
+        'USER': 'udjango',
+        'PASSWORD': 'd64lira',
         'HOST': 'mysql_mysql_1',
         'PORT': '3306',
     },
