@@ -8,7 +8,7 @@ WORKDIR /app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update \
+RUN apt-get update && \
     apt-get install -y --no-install-recommends gcc
 
 # Copies all files from our local project into the container
