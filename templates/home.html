@@ -26,8 +26,6 @@
             <thead class="thead-dark">
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">NOMBRE</th>
-                    <th scope="col">CORREO</th>
                     <th scope="col">EMPRESA</th>
                     <th scope="col">COMPARTIR</th>
                 </tr>
@@ -36,8 +34,6 @@
                 {% for user in users %}
                 <tr>
                     <th scope="row">{{ user.id }}</th>
-                    <td>{{ user.name }}</td>
-                    <td>{{ user.email }}</td>
                     <td>{{ user.company }}</td>
                     <td> <a href="http://192.168.0.101/business.html?send={{ user.token}}" target="_blank">Compartir</a></td>
                 </tr>
