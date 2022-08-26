@@ -1,10 +1,15 @@
+import os
+import email
+
 from ast import Not
 from atexit import register
-import email
+
 from operator import ge
 from pyexpat import model
 from unicodedata import name
 from urllib import request
+
+from django.conf import settings
 from django.shortcuts import render
 from rest_framework import generics, status
 
@@ -88,19 +93,20 @@ class UserCardCreateView(generics.CreateAPIView):
         except Exception as e:
             return message.ErrorMessage(str(e))
 
-class CardUserListView(generics.ListAPIView):
+class CardCompanyListView(generics.ListAPIView):
     permission_classes = ()
     
     def get(self, request, *args, **kwargs):
         queryset = Token.objects.filter(status=True)
         for w in queryset:
-            result_user = TblUsers.objects.filter(userid = w.userId)
-            result_company = TblProcess.objects.filter(id = result_user[0].id_process)
+            # result_user = TblUsers.objects.filter(userid = w.userId)
+            result_company = TblProcess.objects.filter(id = w.companyId)
             #w.name = result_user[0].name
             #w.email = result_user[0].email
-            w.company = result_company[0].name
+            w.name = result_company[0].name
+            w.frontend = settings.FRONTEND
         context = {}
-        context['users'] = queryset
+        context['company'] = queryset
         return render(request,'home.html',context)
 
 """
