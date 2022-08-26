@@ -96,9 +96,9 @@ class CardUserListView(generics.ListAPIView):
         for w in queryset:
             result_user = TblUsers.objects.filter(userid = w.userId)
             result_company = TblProcess.objects.filter(id = result_user[0].id_process)
-            w.name = result_user[0].name
-            w.email = result_user[0].email
-            w.company = result_company[0].name 
+            #w.name = result_user[0].name
+            #w.email = result_user[0].email
+            w.company = result_company[0].name
         context = {}
         context['users'] = queryset
         return render(request,'home.html',context)
@@ -126,7 +126,7 @@ class BusinessCardListView(generics.ListAPIView):
             if result_process.count()> 0:
                 # Search user from de Process
                 queryset = TblUsers.get_queryset().filter(id_process = company)
-            return queryset
+            #return queryset
         """
         Search for Company Name
         """
@@ -136,14 +136,16 @@ class BusinessCardListView(generics.ListAPIView):
                 for proc in result_process:
                     id_process = proc.id
                     queryset = TblUsers.get_queryset().filter(id_process = id_process)
-            return queryset
+            #return queryset
         
         if user:
             # Search user from de Process
             queryset = TblUsers.get_queryset().filter(userid = user)
-            return queryset
+            #return queryset
         # Searh UserName
         if userName:
             # Search user
             queryset = TblUsers.get_queryset().filter(name = userName)
-            return queryset
+            
+        return queryset
+        

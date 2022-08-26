@@ -12,7 +12,7 @@ class TokenSerializer(serializers.ModelSerializer):
     class Meta:
         model = Token
         field = ['userId','token']
-        exclude =['status']
+        exclude =['status','created','updated','deleted']
 
     def to_representation(self, instance):
         userid = instance.userId
