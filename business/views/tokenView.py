@@ -11,7 +11,7 @@ from ..models.token import Token
 from ..models.models import TblProcess
 from .baseMensajeView import BaseMessage
 
-# Form Company List
+# Form Company List Assing Token
 class TokenCompanyListView(generics.ListAPIView):
     permission_classes = ()
     

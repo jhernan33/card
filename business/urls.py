@@ -18,9 +18,9 @@ urlpatterns = [
     # *********************************************** 
 
     # Register Token Company        
-    path('token/company/',              views.TokenCreateView.as_view(),               name="TokenCompany"),
+    path('token/company/',              views.TokenCreateView.as_view(),             name="TokenCompany"),
     # Form Company List Token       
-    path('company/',                    views.CardUserListView.as_view(),            name="ListCard"),
+    path('company/',                    views.CardCompanyListView.as_view(),         name="ListCard"),
     # Search Target Company     
     path('businessCard/',               views.BusinessCardListView.as_view(),        name="BusinessCard"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
