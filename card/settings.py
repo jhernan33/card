@@ -224,7 +224,7 @@ MEDIA_ROOT = os.path.join(DIR,'media')
 
 MEDIA_URL = '/media/'
 WEBSERVER_PORT=''
-WEBSERVER_HOST='license.cards/business/'
+WEBSERVER_HOST='license.cards/business'
 WEBSERVER_PROTOCOL='https://'
 WEBSERVER_IMAGES = WEBSERVER_PROTOCOL+WEBSERVER_HOST+WEBSERVER_PORT+MEDIA_URL
 FRONTEND = 'http://tarjeta.vcard.store/cardFrontend/business.html?companyName='
