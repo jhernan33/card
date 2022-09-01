@@ -1,4 +1,4 @@
 import imp
-from .businessCardView import UsersCardListView, UsersCardRetrieveView, UserCardCreateView, CardCompanyListView, BusinessCardListView
+from .businessCardView import UsersCardListView, UsersCardRetrieveView, UserCardCreateView, CardCompanyListView, BusinessCardListView,BusinessCardFormListView,BusinessCardFormDetailListView
 from .userView import UsersListView
 from .tokenView import TokenCreateView, TokenCompanyListView

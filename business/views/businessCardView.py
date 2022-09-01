@@ -154,4 +154,77 @@ class BusinessCardListView(generics.ListAPIView):
             queryset = TblUsers.get_queryset().filter(name = userName)
             
         return queryset
+
+# Form Business Card For Company
+class BusinessCardFormListView(generics.ListAPIView):
+    permission_classes =()
+    serializer_class = UserCardSerializer
+    pagination_class = SmallResultsSetPagination
+
+    def get(self, request, *args, **kwargs):
+        queryset = Token.objects.filter(status=True)
+        for w in queryset:
+            result_company = TblProcess.objects.filter(id = w.companyId)
+            w.name = result_company[0].name
+            w.frontend = settings.FRONTEND
+        context = {}
+        context['company'] = queryset
+        return render(request,'CompanyBusinessCard.html',context)
+
+class BusinessCardFormDetailListView(generics.ListAPIView):
+    # permission_classes =()
+    # serializer_class = UserCardSerializer
+    # pagination_class = SmallResultsSetPagination
+
+    # def get(self, request, *args, **kwargs):
+    #     queryset = Token.objects.filter(status=True)
+    #     for w in queryset:
+    #         result_company = TblProcess.objects.filter(id = w.companyId)
+    #         w.name = result_company[0].name
+    #         w.frontend = settings.FRONTEND
+    #     context = {}
+    #     context['cards'] = queryset
+    #     return render(request,'ListBusinessCard.html',context)
+    permission_classes =()
+    serializer_class = UserCardSerializer
+    pagination_class = SmallResultsSetPagination
+
+    def get(self, request, *args, **kwargs):
+        queryset = TblUsers.objects.none()
+        company_name    = self.request.query_params.get("companyName", None)
+        company         = self.request.query_params.get("company", None)
+        user            = self.request.query_params.get("user", None)
+        userName        = self.request.query_params.get("userName", None)
+
+        """
+        Search por Company Id
+        """        
+        if company:
+            result_process = TblProcess.objects.filter(id= company)
+            if result_process.count()> 0:
+                # Search user from de Process
+                queryset = TblUsers.get_queryset().filter(id_process = company)
+            #return queryset
+        """
+        Search for Company Name
+        """
+        if company_name:
+            result_process = TblProcess.objects.filter(name=company_name)
+            if result_process.count()>0:
+                for proc in result_process:
+                    id_process = proc.id
+                    queryset = TblUsers.get_queryset().filter(id_process = id_process)
+            #return queryset
         
+        if user:
+            # Search user from de Process
+            queryset = TblUsers.get_queryset().filter(userid = user)
+            #return queryset
+        # Searh UserName
+        if userName:
+            # Search user
+            queryset = TblUsers.get_queryset().filter(name = userName)
+            
+        context = {}
+        context['cards'] = queryset
+        return render(request,'ListBusinessCard.html',context)

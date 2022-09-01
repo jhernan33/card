@@ -23,6 +23,13 @@ urlpatterns = [
     path('company/',                    views.CardCompanyListView.as_view(),         name="ListCard"),
     # Search Target Company     
     path('businessCard/',               views.BusinessCardListView.as_view(),        name="BusinessCard"),
+
+    # ********* List Business Card for Company  ********* 
+    path('card/list/',                  views.BusinessCardFormListView.as_view(),    name="ListCompanyBusinessCard"),
+    # ********* List Business Card for Company  *********
+
+    # ********* List Business Card ********* 
+    path('card/',                       views.BusinessCardFormDetailListView.as_view(),    name="BusineesCardList"),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
  
  
