@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <title>Listar Tarjetas</title>
+</head>
+
+<body>
+    <br>
+    <div class="container-fluid">
+        <table class="table table-bordered">
+            <tr><h3>Listado de Tarjetas</h3></tr>
+            <tr>
+                <th>Id</th>
+                <th>Tarjeta</th>
+                <th>Compartir</th>
+            </tr>
+            {% for result in cards %}
+            <tr>
+                <th>{{ result.userid }}</th>
+                <th>{{ result.name }}</th>
+                <th><a href={{ result.userid }}{{ result.name}} target="_blank">Compartir</a></td></th>
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+</html>
