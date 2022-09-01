@@ -172,19 +172,6 @@ class BusinessCardFormListView(generics.ListAPIView):
         return render(request,'CompanyBusinessCard.html',context)
 
 class BusinessCardFormDetailListView(generics.ListAPIView):
-    # permission_classes =()
-    # serializer_class = UserCardSerializer
-    # pagination_class = SmallResultsSetPagination
-
-    # def get(self, request, *args, **kwargs):
-    #     queryset = Token.objects.filter(status=True)
-    #     for w in queryset:
-    #         result_company = TblProcess.objects.filter(id = w.companyId)
-    #         w.name = result_company[0].name
-    #         w.frontend = settings.FRONTEND
-    #     context = {}
-    #     context['cards'] = queryset
-    #     return render(request,'ListBusinessCard.html',context)
     permission_classes =()
     serializer_class = UserCardSerializer
     pagination_class = SmallResultsSetPagination
@@ -227,4 +214,6 @@ class BusinessCardFormDetailListView(generics.ListAPIView):
             
         context = {}
         context['cards'] = queryset
+        context['frontend'] = settings.FRONTEND
+        
         return render(request,'ListBusinessCard.html',context)

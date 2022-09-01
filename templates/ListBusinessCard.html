@@ -18,16 +18,13 @@
         <table class="table table-bordered">
             <tr><h3>Listado de Tarjetas</h3></tr>
             <tr>
-                <th>Id</th>
-                <th>Tarjeta</th>
-                <th>Compartir</th>
+                <th>PERSONA</th>
+                <th>COMPARTIR URL</th>
             </tr>
             {% for result in cards %}
             <tr>
-                <th>{{ result.userid }}</th>
                 <th>{{ result.name }}</th>
-                <th><a href={{ result.userid }}{{ result.name}} target="_blank">Compartir</a></td></th>
-                
+                <th><a href={{frontend}}{{ result.userid }} target="_blank">Enlace</a></td></th>
             </tr>
             {% endfor %}
         </table>
