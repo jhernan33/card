@@ -107,7 +107,7 @@ class CardCompanyListView(generics.ListAPIView):
             w.frontend = settings.FRONTEND
         context = {}
         context['company'] = queryset
-        return render(request,'home.html',context)
+        return render(request,'business/home.html',context)
 
 """
 Class List Business Card
@@ -169,7 +169,7 @@ class BusinessCardFormListView(generics.ListAPIView):
             w.frontend = settings.FRONTEND
         context = {}
         context['company'] = queryset
-        return render(request,'CompanyBusinessCard.html',context)
+        return render(request,'business/CompanyBusinessCard.html',context)
 
 class BusinessCardFormDetailListView(generics.ListAPIView):
     permission_classes =()
@@ -216,4 +216,4 @@ class BusinessCardFormDetailListView(generics.ListAPIView):
         context['cards'] = queryset
         context['frontend'] = settings.FRONTEND
         
-        return render(request,'ListBusinessCard.html',context)
+        return render(request,'business/ListBusinessCard.html',context)
