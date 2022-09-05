@@ -25,7 +25,7 @@ urlpatterns = [
     path('businessCard/',               views.BusinessCardListView.as_view(),        name="BusinessCard"),
 
     # ********* List Business Card for Company  ********* 
-    path('business/card/list/',                  views.BusinessCardFormListView.as_view(),    name="ListCompanyBusinessCard"),
+    path('card/list/',                  views.BusinessCardFormListView.as_view(),    name="ListCompanyBusinessCard"),
     # ********* List Business Card for Company  *********
 
     # ********* List Business Card ********* 
