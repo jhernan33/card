@@ -169,7 +169,7 @@ class BusinessCardFormListView(generics.ListAPIView):
             w.frontend = settings.FRONTEND
         context = {}
         context['company'] = queryset
-        return render(request,'CompanyBusinessCard.html',context)
+        return render(request,'business/CompanyBusinessCard.html',context)
 
 class BusinessCardFormDetailListView(generics.ListAPIView):
     permission_classes =()
