@@ -17,7 +17,7 @@
     <div class="container-fluid">
         <table class="table table-bordered">
             <tr><h3>Listado de Empresas con Tarjetas</h3></tr>
-            <form method="GET" id="listCompanyBusinessCard" action="business/{% url 'BusineesCardList' %}"novalidate>
+            <form method="GET" id="listCompanyBusinessCard" action="{% url 'BusineesCardList' %}"novalidate>
                 <tr>
                     <td>Empresa</td>
                     <td>
