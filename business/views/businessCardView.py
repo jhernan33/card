@@ -170,7 +170,8 @@ class BusinessCardFormListView(generics.ListAPIView):
         context = {}
         context['company'] = queryset
         return render(request,'CompanyBusinessCard.html',context)
-
+        
+# Form Details List 
 class BusinessCardFormDetailListView(generics.ListAPIView):
     permission_classes =()
     serializer_class = UserCardSerializer
