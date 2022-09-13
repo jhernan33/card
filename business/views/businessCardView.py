@@ -93,6 +93,7 @@ class UserCardCreateView(generics.CreateAPIView):
         except Exception as e:
             return message.ErrorMessage(str(e))
 
+# List Card Company
 class CardCompanyListView(generics.ListAPIView):
     permission_classes = ()
     
