@@ -30,7 +30,7 @@ RUN mkdir /home/python/code
 WORKDIR  /home/python/code
 COPY --chown=python:python ./ .
 
-EXPOSE 8001
+EXPOSE 8000
 
 # make sure all messages always reach console
 ENV PYTHONUNBUFFERED=1
