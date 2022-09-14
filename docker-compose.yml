@@ -6,11 +6,11 @@ services:
     container_name: business
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.web.rule=Host(`license.cards`) && PathPrefix(`/business`)"
-      - "traefik.http.routers.web.middlewares=web-stripprefix"
-      - "traefik.http.middlewares.web-stripprefix.stripprefix.prefixes=/business"
-      - "traefik.http.routers.web.tls=true"
-      - "traefik.http.routers.web.tls.certresolver=resolver"
+      - "traefik.http.routers.business.rule=Host(`license.cards`) && PathPrefix(`/business`)"
+      - "traefik.http.routers.business.middlewares=business-stripprefix"
+      - "traefik.http.middlewares.business-stripprefix.stripprefix.prefixes=/business"
+      - "traefik.http.routers.business.tls=true"
+      - "traefik.http.routers.business.tls.certresolver=resolver"
     expose:  # new
       - 8001
 networks:
