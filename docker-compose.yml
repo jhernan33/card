@@ -12,7 +12,7 @@ services:
       - "traefik.http.routers.business.tls=true"
       - "traefik.http.routers.business.tls.certresolver=resolver"
     expose:  # new
-      - 8001
+      - 8000
 networks:
   default:
     external:
